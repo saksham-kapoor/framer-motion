@@ -59,3 +59,22 @@ Example -
 ```
 
 Tween is used for more uniform transitions, however it supports easing functions as well.
+
+## Hover Animations
+
+We can trigger animations on hover using the whileHover attribute.
+
+Example -
+
+```js
+<motion.button
+  whileHover={{
+    scale: 1.1,
+    boxShadow: "0px 0px 8px rgb(255,255,255)",
+  }}
+>
+  Click Here!
+</motion.button>
+```
+
+### [WIP]
