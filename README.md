@@ -30,3 +30,32 @@ We can also assign it an initial state like so
 ```
 
 It means that now the font-size of button will increase from 0 to 50px on page load.
+
+## Transition Attribute
+
+We can set various other properties like duration, type, etc. using the 'transition' attribute.
+
+We have three types of animations -
+
+- tween
+- inertia
+- spring
+
+Different animations may have different default depending on the properties being animated.
+
+Type 'spring' has another property associated with it called 'stiffness'.
+Higher the value, more spring-y is the animation. Default value - somewhere around 100.
+
+Example -
+
+```js
+<motion.button
+  initial={{ x: 100 }}
+  animate={{ x: 0 }}
+  transition={{ type: "spring", stiffness: 120 }}
+>
+  Click Me!
+</motion.button>
+```
+
+Tween is used for more uniform transitions, however it supports easing functions as well.
