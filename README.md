@@ -284,7 +284,6 @@ and now the button should look like -
 ```
 
 Now the button unmounts after 4 seconds.
-
 Now Add AnimatePresence. The final markup should look like -
 
 ```js
@@ -296,3 +295,36 @@ Now Add AnimatePresence. The final markup should look like -
 AnimatePresence captures the element that is supposed to unmount. Then it checks for the 'exit' attribute on that element and that is how we achieve the cool transition.
 
 Note - button should now be of motion.button type.
+
+## Animating Routes
+
+To Animate page transitions when the route changes, we use Animate Presence as discussed before.
+To animate routes in react we have to wrap the 'Switch' component in App.js by 'AnimatePresence'.
+However, there is no way that AnimatePresence can itself judge when a page unmounts on route change.
+
+For this, we have to use the useLocation hook provided by the react router.
+
+```js
+import { Route, Switch, useLocation } from "react-router-dom";
+
+// in the component declare a location variable
+const location = useLocation();
+// then pass location to the Switch component.
+<Switch location={location} key={location.key}>
+  //routes
+</Switch>;
+```
+
+This arrangment will let AnimatePresence know that a route change has taken place and it will look for the exit attribute to animate the element before it unmounts.
+Now, add exit attributes to the different pages and you're good to go.
+
+Note - Sometimes the new page comes in before the exit transition has finished for the previous page. To avoid this do the following -
+
+```js
+<AnimatePresence exitBeforeEnter>
+//rest of the code is as it is
+```
+
+This 'exitBeforeEnter' property ensures that the new page mounts only after the previous page transition is over.
+
+## [WIP]

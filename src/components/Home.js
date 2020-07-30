@@ -13,13 +13,32 @@ const buttonVariants = {
   },
 };
 
+const containerVariants = {
+  initialState: {
+    opacity: 0,
+  },
+  finalState: {
+    opacity: 1,
+    transition: {
+      duration: 1.5,
+      delay: 0.5,
+    },
+  },
+  exit: {
+    x: "-100vw",
+    transition: {
+      ease: "easeInOut",
+    },
+  },
+};
 const Home = () => {
   return (
     <motion.div
       className='home container'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.8, duration: 1.5 }}
+      variants={containerVariants}
+      initial='initialState'
+      animate='finalState'
+      exit='exit'
     >
       <h2>Welcome to Pizza Joint</h2>
       <Link to='/base'>
