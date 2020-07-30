@@ -197,3 +197,25 @@ const childVariant = {
 'staggerChildren' tells us the time gap between each successive child animation.
 
 Notice that these have to be added in the transition object.
+
+## Keyframes
+
+Keyframes are very similar to css keyframes.
+
+Simple Example -
+
+```js
+const buttonVariants = {
+  hoverStateName: {
+    scale: [1, 1.1, 1, 1.1, 1, 1.1, 1, 1.1, 1],
+  },
+};
+
+<motion.button variants={buttonVariants} whileHover='hoverStateName'>
+  Click Me!
+</motion.button>;
+```
+
+The array here signifies the keyframes. on hovering the button, it scales from 1 to 1.1 then back to 1 and so on until it reaches the end of array.
+
+This is not a recommended approach to 'repeating animations'.
