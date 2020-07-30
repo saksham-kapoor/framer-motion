@@ -150,3 +150,50 @@ const variantButton = {
 Notice that we have removed 'initial' and 'animate' attributes from the child component as they have the same name as the parent component.
 
 If they had different names, then this approach would not work and we would have to define those attributes as well.
+
+### Parent-Child relationship using orchestration properties
+
+Example -
+
+```js
+const parentVariant = {
+  initialState: {
+    x: "100vw",
+    opacity: 0,
+  },
+  finalState: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      mass: 0.4,
+      damping: 8,
+      when: "beforeChildren",
+      staggerChildren: 0.4,
+    },
+  },
+};
+
+const childVariant = {
+  initialState: {
+    opacity: 0,
+  },
+  finalState: {
+    opacity: 1,
+  },
+};
+
+<motion.div
+  variants={parentVariant}
+  initial='initialState'
+  animate='finalState'
+>
+  <motion.p variants={ChildVariant}>This is a paragraph.</motion.p>
+  <motion.button variants={ChildVariant}>Click Me!</motion.button>
+</motion.div>;
+```
+
+'When' tells us when the animation should occur.
+'staggerChildren' tells us the time gap between each successive child animation.
+
+Notice that these have to be added in the transition object.
