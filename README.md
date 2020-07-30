@@ -48,7 +48,7 @@ Higher the value, more spring-y is the animation. Default value - somewhere arou
 
 Example -
 
-```js
+```jsx
 <motion.button
   initial={{ x: 100 }}
   animate={{ x: 0 }}
@@ -77,4 +77,76 @@ Example -
 </motion.button>
 ```
 
-### [WIP]
+## Variants
+
+We use variants as they allow us to do useful things like -
+
+- Allows us to extract our initial, animate, transition attributes to an external object which we can then reference. This helps us keep our code clean.
+- Allow us to propagate changes through the DOM.
+- Allow us to create timing relationships between parent and children motions using transition orchestration properties.
+
+#### Basic Usage
+
+```js
+const variantName = {
+  initialStateName: {
+    x: 100,
+  },
+  finalStateName: {
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 120,
+    },
+  },
+};
+
+<motion.button
+  variants={variantName}
+  initial='initialStateName'
+  animate='finalStateName'
+>
+  Click Me!
+</motion.button>;
+```
+
+Notice that the transition attribute is not defined in the 'finalStateName'.
+'variantName', 'InitialStateName', 'finalStateName' are all arbitrary names, feel free to name as you wish.
+
+### Child can inherit property names from parent
+
+```js
+const variantDiv = {
+  initialStateName: {
+    opacity: 0,
+  },
+  finalStateName: {
+    opacity: 1,
+  },
+};
+
+const variantButton = {
+  initialStateName: {
+    x: 100,
+  },
+  finalStateName: {
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 120,
+    },
+  },
+};
+
+<motion.div
+  variants={variantDiv}
+  initial='initialStateName'
+  animate='finalStateName'
+>
+  <motion.button variants={variantButton}>Click Me!</motion.button>;
+</motion.div>;
+```
+
+Notice that we have removed 'initial' and 'animate' attributes from the child component as they have the same name as the parent component.
+
+If they had different names, then this approach would not work and we would have to define those attributes as well.
