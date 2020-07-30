@@ -1,4 +1,6 @@
-# Framer Motion Notes
+# Framer Motion (Animation Library) Notes
+
+All you need to know to get started with Framer Motion.
 
 ## Animating An Element
 
@@ -250,3 +252,47 @@ To repeat an animation indefinitely use -
 ```js
 yoyo: Infinity,
 ```
+
+## Animate Presence
+
+Used to animate components out of the DOM.
+Mainly used to animate routes.
+
+Let's see how to unmount a button with a cool transition
+
+Firstly import AnimatePresence -
+
+```js
+import { motion, AnimatePresence } from "framer-motion";
+```
+
+Now, write a logic such that the button unmounts after 4s of the page load.
+
+```js
+const [showBtn, setShowBtn] = useState(true);
+setTimeout(() => {
+  setShowTitle(false);
+}, 4000);
+```
+
+and now the button should look like -
+
+```js
+{
+  showTitle && <button>Click Me!</button>;
+}
+```
+
+Now the button unmounts after 4 seconds.
+
+Now Add AnimatePresence. The final markup should look like -
+
+```js
+<AnimatePresence>
+  {showTitle && <motion.button exit={{ y: -1000 }}>Click Me!</motion.button>}
+</AnimatePresence>
+```
+
+AnimatePresence captures the element that is supposed to unmount. Then it checks for the 'exit' attribute on that element and that is how we achieve the cool transition.
+
+Note - button should now be of motion.button type.
