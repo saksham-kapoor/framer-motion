@@ -219,3 +219,34 @@ const buttonVariants = {
 The array here signifies the keyframes. on hovering the button, it scales from 1 to 1.1 then back to 1 and so on until it reaches the end of array.
 
 This is not a recommended approach to 'repeating animations'.
+
+## Repeating Animations
+
+For Repeating animations we use a transition property called 'yoyo', it is used to repeat the animations over and over.
+
+Let's take the previous example and add 'yoyo' to it.
+
+```js
+const buttonVariants = {
+  hoverStateName: {
+    scale: 1.1,
+    transition: {
+      duration: 0.25,
+      yoyo: 10,
+    },
+  },
+};
+
+<motion.button variants={buttonVariants} whileHover='hoverStateName'>
+  Click Me!
+</motion.button>;
+```
+
+Here the value 10 assigned to the yoyo property signifies the number of keyframes.
+In this example, animation is repeated for 10 keyframes alternating from actual state to hover state.
+
+To repeat an animation indefinitely use -
+
+```js
+yoyo: Infinity,
+```

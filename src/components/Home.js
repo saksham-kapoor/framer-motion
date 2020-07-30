@@ -4,8 +4,12 @@ import { motion } from "framer-motion";
 
 const buttonVariants = {
   hoverState: {
-    scale: [1, 1.1, 1, 1.1, 1],
+    scale: 1.1,
     boxShadow: "0px 0px 8px rgb(255,255,255)",
+    transition: {
+      duration: 0.25,
+      yoyo: Infinity,
+    },
   },
 };
 
