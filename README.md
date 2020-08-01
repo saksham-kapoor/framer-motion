@@ -327,4 +327,21 @@ Note - Sometimes the new page comes in before the exit transition has finished f
 
 This 'exitBeforeEnter' property ensures that the new page mounts only after the previous page transition is over.
 
+## onExitComplete
+
+Just like exitBeforeEnter, on onExitComplete is also a property of Animate Presence. We can pass a function to it which is called whenever an exit animation is complete.
+
+Example ->
+
+```js
+<AnimatePresence
+  exitBeforeEnter
+  onExitComplete={() => {
+    console.log("Exit Animation is complete.")
+  }}
+>
+```
+
+Note - This function is called after the exit animation is complete and before the new page enters.
+
 ## [WIP]
