@@ -377,4 +377,34 @@ At pathLength: 0, svg will not show as the path hasn't been traced yet.
 At pathLength: 1, svg paths have been fully traced.
 It gives a drawing effect.
 
+## Creating A Loader
+
+We can animate a loader using framer keyframes and the transition property like so
+
+```js
+const loaderVariants = {
+  animationOne: {
+    x: [-20, 20],
+    y: [0, -30],
+    transition: {
+      x: {
+        yoyo: Infinity,
+        duration: 0.5,
+      },
+      y: {
+        yoyo: Infinity,
+        duration: 0.25,
+        ease: "easeOut",
+      },
+    },
+  },
+};
+```
+
+Note:
+
+1. We have already seen the yoyo property, it basically repeats the keyframes given amount of times (Infinity in this case).
+2. We can have different transitions for different animation properties as shown above.
+3. Here the loader is styled such that it appears as if a ball is jumping according to these given keyframes in the x,y animation properties.
+
 ## [WIP]
