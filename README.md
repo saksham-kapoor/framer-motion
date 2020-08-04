@@ -344,4 +344,37 @@ Example ->
 
 Note - This function is called after the exit animation is complete and before the new page enters.
 
+## Animating SVGs
+
+SVGs are animated using a property called 'pathLength'.
+
+Example:
+
+```js
+const pathVariants = {
+  initial: {
+    pathLength: 0,
+  },
+  final: {
+    pathLength: 1,
+    transition: {
+      duration: 2,
+    },
+  },
+};
+
+<motion.path
+  variants={pathVariants}
+  initial='initial'
+  animate='final'
+  fill='none'
+  d='M40 40 L80 40 C80 40 80 80 40 80 C40 80 0 80 0 40 C0 40 0 0 40 0Z'
+/>;
+```
+
+At pathLength: 0, svg will not show as the path hasn't been traced yet.
+
+At pathLength: 1, svg paths have been fully traced.
+It gives a drawing effect.
+
 ## [WIP]
