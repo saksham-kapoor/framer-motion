@@ -441,4 +441,51 @@ const [animation, cycleAnimation] = useCycle("animationOne", "animationTwo");
 </div>;
 ```
 
-## [WIP]
+## Draggable Items
+
+We can create draggable items by using just one word 'drag', let me show you -
+
+```js
+<motion.div drag>Drag Me!</motion.div>
+```
+
+Haha, that was simple.
+
+Now, if we want to customize this functionality, we use something called drag constraints.
+
+#### Example
+
+```js
+<motion.div drag dragConstraints={{ left: 0, top: 0, right: 0, bottom: 0 }}>
+  Drag Me! But I will spring right back lol
+</motion.div>
+```
+
+We can easily control the force required to drag it using the dragElastic property.
+dragElastic property controls how easily one can drag an item. Higher the value, easier it is.
+
+Example
+
+```js
+<motion.div
+  drag
+  dragConstraints={{ left: 0, top: 0, right: 0, bottom: 0 }}
+  dragElastic={0.4}
+>
+  Drag Me! But I will spring right back lol
+</motion.div>
+```
+
+Default value is 1. Here, 0.4 will make it a little harder for us to drag the component around.
+
+---
+
+### Get in touch
+
+[My Portfolio](https://sakshamkapoor.me)
+
+---
+
+This guide and the sample project is highly inspired by Framer Motion tutorial series by The Net Ninja.
+
+[Check it out here](https://www.youtube.com/playlist?list=PL4cUxeGkcC9iHDnQfTHEVVceOEBsOf07i)
