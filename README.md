@@ -407,4 +407,38 @@ Note:
 2. We can have different transitions for different animation properties as shown above.
 3. Here the loader is styled such that it appears as if a ball is jumping according to these given keyframes in the x,y animation properties.
 
+## UseCycle Hook
+
+Helps us to cycle through different values. Useful to swap out animation types on the fly or performing multiple animations based on user interaction.
+
+#### Sample Usage
+
+```js
+const loaderVariants = {
+  animationOne: {
+    x: [-20, 20],
+    transition: {
+      yoyo: Infinity,
+    },
+  },
+  animationTwo: {
+    y: [0, -40],
+    transition: {
+      yoyo: Infinity,
+    },
+  },
+};
+
+// Inside Component
+const [animation, cycleAnimation] = useCycle("animationOne", "animationTwo");
+
+<div
+  onClick={() => {
+    cycleAnimation();
+  }}
+>
+  Cycle Loader
+</div>;
+```
+
 ## [WIP]
